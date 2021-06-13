@@ -40,7 +40,9 @@ set listchars+=trail:·
 " key mappings
 imap jj <esc>
 imap kk <esc>0
+nmap Q <Nop>
+" spellcheck
 imap <F7> <C-o>:setlocal spell! spelllang=en_us<CR>
 map <F7> :setlocal spell! spelllang=en_us<CR>
-nmap Q <Nop>
+" shift+s to substitue all instances of current word under cursor
 noremap <S-s> #:%s/<C-r>+//g<left><left>
