@@ -1,0 +1,16 @@
+# env
+export EDITOR=vi
+export VISUAL=vim
+
+# aliases
+alias diff='diff --color=auto'
+alias ll='ls -hlF --group-directories-first --color=auto'
+alias cat='bat -p'  # from https://github.com/sharkdp/bat
+alias k=kubectl
+
+# completion
+source <(helm    completion bash)
+source <(kubectl completion bash)
+complete -F __start_kubectl k
+complete -C aws_completer   aws
+complete -C terraform       terraform
