@@ -1,11 +1,13 @@
+# this file should be sourced by adding the following expression to ~/.bashrc: [ -f ~/.mzrc ] && . ~/.mzrc
+
 # env
 export EDITOR=vi
 export VISUAL=vim
 
 # aliases
-alias diff='diff --color=auto'
 alias ll='ls -hlF --group-directories-first --color=auto'
-alias cat='bat -p'  # from https://github.com/sharkdp/bat
+alias diff='diff --color=auto'
+alias cat='bat -p'  # package available at https://github.com/sharkdp/bat
 alias k=kubectl
 
 # completion
