@@ -27,7 +27,7 @@ set title
 
 " colors, syntax and highlights
 syntax on
-color slate  " default/ron/slate/darkblue
+colorscheme default  " default/ron/firecode/jellybeans/mono_sw/random/sublimemolokai
 set background=dark
 autocmd BufNewFile,BufRead .*rc         setfiletype sh
 autocmd bufnewfile,BufRead *ockerfile*  setfiletype dockerfile
