@@ -12,4 +12,4 @@
 	st = status -sb
 	cam = commit -am
 	last = log -1 HEAD --stat --color
-	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr)%Creset %s %C(bold blue)<%an>%Creset'
