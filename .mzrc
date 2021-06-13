@@ -9,15 +9,15 @@ export AWS_PROFILE=${AWS_PROFILE}
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
-alias cat='bat -pp'  # package available at https://github.com/sharkdp/bat
 alias whatismyip='curl ifconfig.me'
 alias batlvl='echo "battery at $(cat /sys/class/power_supply/BAT0/capacity)%"'
+alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat
 alias k=kubectl
 
 # completion
 source <(helm     completion bash)
-source <(kubectl  completion bash)
 source <(minikube completion bash)
+source <(kubectl  completion bash)
 complete -F __start_kubectl k
 complete -C aws_completer   aws
 complete -C terraform       terraform
