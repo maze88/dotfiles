@@ -3,16 +3,21 @@
 # env
 export EDITOR=vi
 export VISUAL=vim
+export AWS_PROFILE=${AWS_PROFILE}
+#export BAT_THEME=${BAT_THEME}  # choices: `bat --list-themes`
 
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
-alias cat='bat -p'  # package available at https://github.com/sharkdp/bat
+alias cat='bat -pp'  # package available at https://github.com/sharkdp/bat
+alias whatismyip='curl ifconfig.me'
+alias batlvl='echo "battery at $(cat /sys/class/power_supply/BAT0/capacity)%"'
 alias k=kubectl
 
 # completion
-source <(helm    completion bash)
-source <(kubectl completion bash)
+source <(helm     completion bash)
+source <(kubectl  completion bash)
+source <(minikube completion bash)
 complete -F __start_kubectl k
 complete -C aws_completer   aws
 complete -C terraform       terraform
