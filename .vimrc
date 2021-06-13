@@ -27,7 +27,7 @@ set title
 
 " colors, syntax and highlights
 syntax on
-color darkblue  " default/ron/slate/darkblue
+color slate  " default/ron/slate/darkblue
 set background=dark
 autocmd BufNewFile,BufRead .*rc         setfiletype sh
 autocmd bufnewfile,BufRead *ockerfile*  setfiletype dockerfile
