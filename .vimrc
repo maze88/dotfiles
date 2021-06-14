@@ -25,10 +25,12 @@ set scrolloff=8
 " misc
 set title
 
-" colors, syntax and highlights
-syntax on
+" colors
 colorscheme default  " favorites: default/firecode/ron/sublimemolokai
 set background=dark
+
+" syntax
+syntax on
 autocmd BufNewFile,BufRead .*rc         setfiletype sh
 autocmd bufnewfile,BufRead *ockerfile*  setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile* setfiletype groovy
