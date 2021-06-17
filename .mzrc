@@ -10,8 +10,7 @@ export AWS_PROFILE=${AWS_PROFILE}
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias whatismyip='curl ifconfig.me'
-alias batlvl='echo "battery at $(cat /sys/class/power_supply/BAT0/capacity)%"'
-alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat
+alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias k=kubectl
 
 # completion
