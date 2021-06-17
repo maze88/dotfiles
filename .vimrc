@@ -40,6 +40,7 @@ set listchars+=tab:│·
 set listchars+=trail:·
 
 " key mappings
+imap ;; <esc>
 imap jj <esc>
 imap kk <esc>0
 nmap Q <Nop>
