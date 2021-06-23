@@ -14,6 +14,7 @@ alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/late
 alias k=kubectl
 
 # completion
+source <(pandoc --bash-completion)  # for pdfs, requires texlive
 source <(helm     completion bash)
 source <(minikube completion bash)
 source <(kubectl  completion bash)
