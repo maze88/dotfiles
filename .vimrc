@@ -26,7 +26,7 @@ set scrolloff=8
 set title
 
 " colors
-colorscheme default  " favorites: default/firecode/ron/sublimemolokai
+colorscheme firecode  " favorites: default/firecode/ron/sublimemonokai
 set background=dark
 
 " syntax
@@ -34,6 +34,7 @@ syntax on
 autocmd BufNewFile,BufRead .*rc         setfiletype sh
 autocmd bufnewfile,BufRead *ockerfile*  setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile* setfiletype groovy
+autocmd BufNewFile,BufRead *akefile*    set noexpandtab
 set list
 set listchars=
 set listchars+=tab:│·
