@@ -5,6 +5,8 @@
   path = ~/work/.gitconfig
 [core]
 	editor = vim
+[push]
+	followTags = true
 [alias]
 	co = checkout
 	br = branch
