@@ -32,9 +32,9 @@ set background=dark
 " syntax
 syntax on
 autocmd BufNewFile,BufRead .*rc           setfiletype sh
-autocmd BufNewFile,BufRead ~/.kube/config setfiletype yaml
 autocmd bufnewfile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
+autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
 autocmd BufNewFile,BufRead *akefile*      set noexpandtab
 set list
 set listchars=
