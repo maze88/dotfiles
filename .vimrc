@@ -26,7 +26,7 @@ set scrolloff=8
 set title
 
 " colors
-colorscheme ron  " favorites: default/firecode/ron/sublimemonokai
+colorscheme default  " favorites: default/firecode/ron/sublimemonokai
 set background=dark
 
 " syntax
