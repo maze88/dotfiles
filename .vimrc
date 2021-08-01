@@ -26,7 +26,7 @@ set scrolloff=8
 set title
 
 " colors
-colorscheme default  " favorites: default/gruvbox/firecode/ron/sublimemonokai
+colorscheme default  " favorites: default/badwolf/gruvbox/firecode/ron/sublimemonokai
 set background=dark
 
 " syntax
