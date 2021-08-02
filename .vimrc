@@ -45,8 +45,8 @@ set listchars+=trail:·
 imap jj <esc>
 nmap Q <Nop>
 " spellcheck
-map <F7>       :setlocal spell! spelllang=en_us<CR>
-imap <F7> <C-o>:setlocal spell! spelllang=en_us<CR>
+map <F7>       :setlocal spell!<CR>
+imap <F7> <C-o>:setlocal spell!<CR>
 " substitute all instances of current word under cursor
 nmap <S-s> #:%s/<C-r>+//g<left><left>
 " move current line or selection up/down
