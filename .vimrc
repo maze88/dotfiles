@@ -26,7 +26,7 @@ set scrolloff=8
 set title
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai
-colorscheme gruvbox
+colorscheme badwolf
 set background=dark
 
 " syntax
@@ -44,6 +44,7 @@ set listchars+=trail:·
 " key mappings
 imap jj <esc>
 nmap Q <Nop>
+map <C-h> :noh<CR>
 " spellcheck
 map <F7>       :setlocal spell!<CR>
 imap <F7> <C-o>:setlocal spell!<CR>
