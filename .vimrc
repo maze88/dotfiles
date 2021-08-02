@@ -24,9 +24,10 @@ set scrolloff=8
 
 " misc
 set title
+set wildmenu
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai
-colorscheme badwolf
+colorscheme gruvbox
 set background=dark
 
 " syntax
