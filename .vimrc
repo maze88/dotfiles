@@ -32,7 +32,7 @@ set background=dark
 
 " syntax
 syntax on
-autocmd BufNewFile,BufRead .*rc           setfiletype bash
+autocmd BufNewFile,BufRead .*rc           setfiletype sh
 autocmd bufnewfile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
