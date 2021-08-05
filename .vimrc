@@ -27,7 +27,7 @@ set title
 set wildmenu
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai
-colorscheme gruvbox
+colorscheme badwolf
 set background=dark
 
 " syntax
@@ -52,30 +52,28 @@ endif
 
 " vim-plug (plugins)
 call plug#begin()
-  " fzf
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " key mappings
 imap jj <esc>
 nmap Q <Nop>
 map H :noh<CR>
-let mapleader = " "
+" substitute all instances of current word under cursor
+nmap <S-s> #:%s/<C-r>+//g<left><left>
 " spellcheck
 map <F7>       :setlocal spell!<CR>
 imap <F7> <C-o>:setlocal spell!<CR>
-" substitute all instances of current word under cursor
-nmap <S-s> #:%s/<C-r>+//g<left><left>
 " move current line or selection up/down
-nmap <C-K> :m -2<CR>==
-nmap <C-J> :m +1<CR>==
-vmap <C-K> :m '<-2<CR>gv=gv
-vmap <C-J> :m '>+1<CR>gv=gv
+nmap <C-k> :m -2<CR>==
+nmap <C-j> :m +1<CR>==
+vmap <C-k> :m '<-2<CR>gv=gv
+vmap <C-j> :m '>+1<CR>gv=gv
 " fzf (plugin)
 let $FZF_DEFAULT_COMMAND = 'find .'
 nmap <C-p> :Files<CR>
 nmap <C-g> :GFiles<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-l> :Lines<CR>
-map <leader><space> <C-p>
