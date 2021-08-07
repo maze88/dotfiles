@@ -1,10 +1,11 @@
-# this file should be sourced by adding the following expression to ~/.bashrc: [ -f ~/.mzrc ] && . ~/.mzrc
+# this file should be sourced by adding the following expression to ~/.bashrc:
+#   [ -f ~/.mzrc ] && . ~/.mzrc
 
 # env
 export EDITOR=vi
 export VISUAL=vim
 export AWS_PROFILE=${AWS_PROFILE}
-#export BAT_THEME=${BAT_THEME}  # choices: `bat --list-themes`
+export BAT_THEME=${BAT_THEME}  # choices: `bat --list-themes`
 
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
