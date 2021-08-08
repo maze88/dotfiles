@@ -10,8 +10,8 @@ export BAT_THEME=${BAT_THEME}  # choices: `bat --list-themes`
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
-alias whatismyip='curl ifconfig.me'
-alias memtop="ps -o pid,user,pmem,cmd ax | sort -b -k3 -r | less"  # outputs processes sorted by their memory consumption
+alias whatsmyip='curl ifconfig.me'
+alias memtop="(echo -e 'PID\tUSER\t%MEM\tCMD' ; ps --no-headers -o pid,user,pmem,cmd ax | sort -brnk3) | less"  # outputs processes sorted by their memory consumption
 alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias k=kubectl
 
