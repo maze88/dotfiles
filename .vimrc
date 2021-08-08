@@ -60,7 +60,8 @@ call plug#end()
 " key mappings
 imap jj <esc>
 nmap Q <Nop>
-map H :noh<CR>
+nmap Y y$
+nmap H :noh<CR>
 " substitute all instances of current word under cursor
 nmap <S-s> #:%s/<C-r>+//g<left><left>
 " spellcheck
