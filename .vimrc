@@ -27,7 +27,7 @@ set title
 set wildmenu
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai
-colorscheme badwolf
+colorscheme gruvbox
 set background=dark
 
 " syntax
@@ -37,7 +37,7 @@ autocmd BufNewFile,BufRead .*rc           setfiletype bash
 autocmd bufnewfile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
-autocmd BufNewFile,BufRead *akefile*      set noexpandtab
+autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
 set list
 set listchars=
 set listchars+=tab:│·
@@ -52,9 +52,9 @@ endif
 
 " vim-plug (plugins)
 call plug#begin()
-" fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  " fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " key mappings
