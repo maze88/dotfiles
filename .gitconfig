@@ -2,7 +2,7 @@
 	name = Michael Zeevi
 	email = michael.52@msn.com
 [includeIf "gitdir:~/work/"]
-  path = ~/work/.gitconfig
+	path = ~/work/.gitconfig
 [core]
 	editor = vim
 [alias]
