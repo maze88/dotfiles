@@ -5,13 +5,14 @@
 export EDITOR=vi
 export VISUAL=vim
 export AWS_PROFILE=${AWS_PROFILE}
-export BAT_THEME=${BAT_THEME}  # choices: `bat --list-themes`
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'  # get fd-find with apt
+export FZF_DEFAULT_OPTS='--multi --cycle'  # get fzf from https://github.com/junegunn/fzf
 
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias whatsmyip='curl ifconfig.me'
-alias memtop="(echo -e 'PID\tUSER\t%MEM\tCMD' ; ps --no-headers -o pid,user,pmem,cmd ax | sort -brnk3) | less"  # outputs processes sorted by their memory consumption
+alias memtop="(echo -e 'PID\tUSER\t%MEM\tCMD' ; ps --no-headers -o pid,user,pmem,cmd ax | sort -brnk3) | less"  # output processes sorted by memory consumption
 alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias k=kubectl
 

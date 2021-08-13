@@ -73,7 +73,6 @@ nmap <C-j> :m +1<CR>==
 vmap <C-k> :m '<-2<CR>gv=gv
 vmap <C-j> :m '>+1<CR>gv=gv
 " fzf (plugin)
-let $FZF_DEFAULT_COMMAND = 'find .'
 nmap <C-p> :Files<CR>
 nmap <C-g> :GFiles<CR>
 nmap <C-b> :Buffers<CR>
