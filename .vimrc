@@ -54,7 +54,7 @@ endif
 call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-call plug#end()
+call plug#end()  " can affect other settings - consider editing function in source
 
 " key mappings
 imap jj <esc>
