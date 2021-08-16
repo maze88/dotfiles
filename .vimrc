@@ -27,11 +27,11 @@ set title
 set wildmenu
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai
-colorscheme gruvbox
+colorscheme sublimemonokai
 set background=dark
 
 " syntax
-syntax on
+syntax enable
 autocmd BufNewFile,BufRead .vimrc         setfiletype vim
 autocmd BufNewFile,BufRead .*rc           setfiletype bash
 autocmd bufnewfile,BufRead *ockerfile*    setfiletype dockerfile
