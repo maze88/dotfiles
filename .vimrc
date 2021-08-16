@@ -52,9 +52,9 @@ endif
 
 " vim-plug (plugins)
 call plug#begin()
-  " fzf
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 " key mappings
@@ -62,6 +62,7 @@ imap jj <esc>
 nmap Q <Nop>
 nmap Y y$
 nmap H :noh<CR>
+map <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nmap <S-s> #:%s/<C-r>+//g<left><left>
 " spellcheck
