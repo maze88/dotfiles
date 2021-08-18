@@ -34,7 +34,7 @@ set background=dark
 syntax enable
 autocmd BufNewFile,BufRead .vimrc         setfiletype vim
 autocmd BufNewFile,BufRead .*rc           setfiletype bash
-autocmd bufnewfile,BufRead *ockerfile*    setfiletype dockerfile
+autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
 autocmd BufNewFile,BufRead *.hcl          setfiletype lua
@@ -80,3 +80,6 @@ nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-l> :Lines<CR>
 nmap <C-g> :GFiles<CR>
+
+" reload .vimrc on change
+autocmd BufWritePost .vimrc source $MYVIMRC
