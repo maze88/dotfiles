@@ -1,6 +1,7 @@
 [user]
 	name = Michael Zeevi
 	email = michael.52@msn.com
+	signingkey = B414CE964283C288
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig
 [core]
