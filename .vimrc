@@ -38,7 +38,7 @@ autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
 autocmd BufNewFile,BufRead *.hcl          setfiletype lua
-autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
+autocmd BufNewFile,BufRead *akefile*,.gitconfig,*.sublime-settings set noexpandtab
 set list
 set listchars=
 set listchars+=tab:│·

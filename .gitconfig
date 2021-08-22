@@ -1,11 +1,12 @@
 [user]
 	name = Michael Zeevi
 	email = michael.52@msn.com
-	signingkey = B414CE964283C288
-[includeIf "gitdir:~/work/"]
-	path = ~/work/.gitconfig
+	signingkey = B414CE964283C287
+[includeIf "gitdir:~/work/develeap/"]
+	path = ~/work/develeap/.gitconfig
 [core]
 	editor = vim
+	fileMode = true
 [alias]
 	co = checkout
 	br = branch
@@ -14,3 +15,7 @@
 	cam = commit -am
 	last = diff HEAD~1
 	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr)%Creset %s %C(bold blue)<%an>%Creset'
+[gpg]
+	program = /usr/bin/gpg
+[commit]
+	gpgsign = true
