@@ -45,9 +45,9 @@ set listchars+=tab:│·
 set listchars+=trail:·
 
 " plugin manager
-let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let vim_plug_url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_git
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_url
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -56,7 +56,7 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'
-call plug#end()
+call plug#end()  " can affect other settings - consider editing function in source
 
 " key mappings
 imap jj <Esc>
@@ -75,11 +75,11 @@ nmap <C-j> :m +1<CR>
 vmap <C-k> :m '<-2<CR>gv
 vmap <C-j> :m '>+1<CR>gv
 " fzf (plugin)
-nmap <C-o> <C-p>
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-l> :Lines<CR>
 nmap <C-g> :GFiles<CR>
+nmap <C-o> <C-p>
 
 " reload .vimrc on change
 autocmd BufWritePost .vimrc source $MYVIMRC
