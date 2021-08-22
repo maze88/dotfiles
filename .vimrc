@@ -45,9 +45,9 @@ set listchars+=tab:│·
 set listchars+=trail:·
 
 " plugin manager
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_git
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -59,13 +59,13 @@ call plug#begin()
 call plug#end()
 
 " key mappings
-imap jj <esc>
+imap jj <Esc>
 nmap Q <Nop>
 nmap Y y$
 nmap H :noh<CR>
 nmap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
-nmap S #:%s/<C-r>+//g<left><left>
+nmap S #:%s/<C-r>+//g<Left><Left>
 " spellcheck
 map <F7>       :setlocal spell!<CR>
 imap <F7> <C-o>:setlocal spell!<CR>
