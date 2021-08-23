@@ -79,11 +79,11 @@ function! s:coc_toggle()
     CocEnable
   endif
 endfunction
+let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 inoremap <silent><expr><C-@>   coc#refresh()
 inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
-let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 
 " key mappings
 inoremap jj <Esc>
