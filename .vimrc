@@ -52,7 +52,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" plugins
+" plugin imports
 call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -60,41 +60,40 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}  " requires node >=12.12
 call plug#end()
 
-" fzf (plugin) settings
+" plugin settings: fzf
 nmap <C-o> <C-p>
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-l> :Lines<CR>
 nmap <C-g> :GFiles<CR>
 
-" coc (plugin) settings
-let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requireds `pip3 install jedi`; other extensions chosen from https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" plugin settings: coc
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+function! s:coc_toggle()
+    if g:coc_enabled
+        CocDisable
+    else
+        CocEnable
+    endif
+endfunction
+inoremap <silent><expr><C-@>   coc#refresh()
+inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
+let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 
 " key mappings
 imap jj <Esc>
-nmap Q <Nop>
 nmap Y y$
-nmap H :noh<CR>
+nmap Q <Nop>
+nmap H :nohlsearch<CR>
+map <F7> :setlocal spell!<CR>
 nmap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nmap S #:%s/<C-r>+//g<Left><Left>
-" spellcheck
-map <F7>       :setlocal spell!<CR>
-imap <F7> <C-o>:setlocal spell!<CR>
 " move current line or selection up/down
 nmap <C-k> :m -2<CR>
 nmap <C-j> :m +1<CR>
