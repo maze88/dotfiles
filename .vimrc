@@ -59,13 +59,15 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}  " requires node >=12.12
   Plug 'tpope/vim-surround'
 call plug#end()
+" auto install plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 
 " plugin settings: fzf
 nmap <C-o> <C-p>
-nmap <C-p> :Files<CR>
-nmap <C-b> :Buffers<CR>
-nmap <C-l> :Lines<CR>
-nmap <C-g> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-l> :Lines<CR>
+nnoremap <C-g> :GFiles<CR>
 
 " plugin settings: coc
 function! s:check_back_space() abort
@@ -79,11 +81,11 @@ function! s:coc_toggle()
     CocEnable
   endif
 endfunction
-let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 inoremap <silent><expr><C-@>   coc#refresh()
 inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
+let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 
 " key mappings
 inoremap jj <Esc>
