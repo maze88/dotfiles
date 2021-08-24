@@ -23,12 +23,13 @@ set t_vb=
 set scrolloff=8
 
 " misc
-autocmd BufWritePost .vimrc source $MYVIMRC
 set title
 set wildmenu
+autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
+autocmd BufWritePost .vimrc source $MYVIMRC
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
-colorscheme random
+colorscheme ron
 set background=dark
 
 " syntax
@@ -39,7 +40,6 @@ autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
 autocmd BufNewFile,BufRead *.hcl          setfiletype lua
-autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
 set list
 set listchars=
 set listchars+=tab:│·
@@ -56,20 +56,25 @@ endif
 call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'airblade/vim-gitgutter'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}  " requires node >=12.12
   Plug 'tpope/vim-surround'
 call plug#end()
 " auto install plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 
+" plugin settings: gitgutter
+nnoremap <F6> :GitGutterToggle<CR>
+
 " plugin settings: fzf
-nmap <C-o> <C-p>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-l> :Lines<CR>
 nnoremap <C-g> :GFiles<CR>
+nmap <C-o> <C-p>
 
 " plugin settings: coc
+let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -85,15 +90,13 @@ inoremap <silent><expr><C-@>   coc#refresh()
 inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
-let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 
 " key mappings
 inoremap jj <Esc>
 nnoremap Y y$
-nnoremap Q <Nop>
 nnoremap H :nohlsearch<CR>
-nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 noremap <F7> :setlocal spell!<CR>
+nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
 " move current line or selection up/down
@@ -101,3 +104,7 @@ nnoremap <C-k> :m -2<CR>
 nnoremap <C-j> :m +1<CR>
 vnoremap <C-k> :m '<-2<CR>gv
 vnoremap <C-j> :m '>+1<CR>gv
+" cover for commands typos
+command W w
+command Q q
+command Wq wq
