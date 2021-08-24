@@ -45,14 +45,17 @@ set listchars=
 set listchars+=tab:│·
 set listchars+=trail:·
 
-" plugin manager
+" install plugin manager
 let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_git
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" plugin imports
+" auto install missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
+
+" plugin downloads
 call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -60,8 +63,6 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}  " requires node >=12.12
   Plug 'tpope/vim-surround'
 call plug#end()
-" auto install plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 
 " plugin settings: gitgutter
 nnoremap <F6> :GitGutterToggle<CR>
