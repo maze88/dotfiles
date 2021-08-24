@@ -30,10 +30,10 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
 colorscheme ron
-set background=dark
 
 " syntax
-syntax enable
+syntax on
+set background=dark
 autocmd BufNewFile,BufRead .vimrc         setfiletype vim
 autocmd BufNewFile,BufRead .*rc           setfiletype bash
 autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
@@ -44,6 +44,7 @@ set list
 set listchars=
 set listchars+=tab:│·
 set listchars+=trail:·
+set updatetime=250
 
 " install plugin manager
 let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -66,6 +67,10 @@ call plug#end()
 
 " plugin settings: gitgutter
 nnoremap <F6> :GitGutterToggle<CR>
+highlight clear SignColumn
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#dddd00 ctermfg=3
 
 " plugin settings: fzf
 nnoremap <C-p> :Files<CR>
