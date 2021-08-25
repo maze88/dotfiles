@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS='--multi --cycle'  # get fzf from https://github.com/jun
 alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias whatsmyip='curl ifconfig.me'
-alias memtop="(echo -e 'PID\tUSER\t%MEM\tCMD' ; ps --no-headers -o pid,user,pmem,cmd ax | sort -brnk3) | less"  # output processes sorted by memory consumption
+alias memtop="(echo -e 'PID\tUSER\t%MEM\tCOMMAND' ; ps --no-headers -o pid,user,pmem,comm ax | sort -brnk3) | less"  # output processes sorted by memory consumption
 alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias k=kubectl
 
