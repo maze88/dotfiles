@@ -29,11 +29,10 @@ autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
 autocmd BufWritePost .vimrc source $MYVIMRC
 set updatetime=320
 
+" syntax and colors
+syntax enable
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
-colorscheme sublimemonokai
-
-" syntax
-syntax on
+colorscheme gruvbox
 set background=dark
 set list
 set listchars=
@@ -51,7 +50,6 @@ inoremap jj <Esc>
 nnoremap Y y$
 nnoremap H :nohlsearch<CR>
 noremap <F7> :setlocal spell!<CR>
-" write then make
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
