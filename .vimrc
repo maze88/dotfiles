@@ -25,13 +25,16 @@ set scrolloff=8
 " misc
 set title
 set wildmenu
-autocmd BufNewFile,BufRead *akefile*,*.sublime-settings set noexpandtab
-autocmd BufWritePost .vimrc source $MYVIMRC
 set updatetime=320
+autocmd BufWritePost .vimrc source $MYVIMRC
+autocmd BufNewFile,BufRead *akefile*,.gitconfig set noexpandtab
+" fixes spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
+autocmd BufWritePost .vimrc highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
+autocmd ColorScheme *       highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " syntax and colors
 syntax enable
-" colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
+" favorite colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
 colorscheme gruvbox
 set background=dark
 set list
@@ -53,8 +56,8 @@ noremap <F7> :setlocal spell!<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
-" hide all decorations (spellcheck, gitgutter, code completion)
-nmap <silent><F5> :setlocal nospell<CR>:GitGutterDisable<CR>:CocDisable<CR>
+" hide all decorations (spellcheck, search highlights, gitgutter, code completion)
+nmap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>:GitGutterDisable<CR>:CocDisable<CR>
 " move current line or selection up/down
 nnoremap <C-k> :m -2<CR>
 nnoremap <C-j> :m +1<CR>
@@ -114,4 +117,3 @@ inoremap <silent><expr><C-@>   coc#refresh()
 inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
-
