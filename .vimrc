@@ -20,7 +20,7 @@ set visualbell
 set t_vb=
 
 " navigation
-set scrolloff=8
+set scrolloff=15
 
 " misc
 set title
@@ -28,9 +28,8 @@ set wildmenu
 set updatetime=320
 autocmd BufWritePost .vimrc source $MYVIMRC
 autocmd BufNewFile,BufRead *akefile*,.gitconfig set noexpandtab
-" fixes spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
-autocmd BufWritePost .vimrc highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
-autocmd ColorScheme *       highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
+" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
+autocmd VimEnter,ColorScheme * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " syntax and colors
 syntax enable
@@ -44,9 +43,9 @@ set listchars+=trail:·
 autocmd BufNewFile,BufRead .vimrc         setfiletype vim
 autocmd BufNewFile,BufRead .*rc           setfiletype bash
 autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
+autocmd BufNewFile,BufRead *.hcl          setfiletype lua
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
-autocmd BufNewFile,BufRead *.hcl          setfiletype lua
 
 " key mappings
 inoremap jj <Esc>
@@ -88,10 +87,10 @@ call plug#end()
 
 " plugin settings: gitgutter
 nnoremap <F6> :GitGutterToggle<CR>
-highlight clear SignColumn
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#dddd00 ctermfg=3
+autocmd VimEnter,ColorScheme * highlight clear SignColumn
+autocmd VimEnter,ColorScheme * highlight GitGutterDelete  ctermbg=NONE ctermfg=1
+autocmd VimEnter,ColorScheme * highlight GitGutterAdd     ctermbg=NONE ctermfg=2
+autocmd VimEnter,ColorScheme * highlight GitGutterChange  ctermbg=NONE ctermfg=3
 
 " plugin settings: fzf
 nnoremap <C-p> :Files<CR>
@@ -113,7 +112,7 @@ function! s:coc_toggle()
     CocEnable
   endif
 endfunction
+nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
 inoremap <silent><expr><C-@>   coc#refresh()
 inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
-nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
