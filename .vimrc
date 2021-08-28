@@ -14,36 +14,40 @@ set expandtab
 set hlsearch
 set incsearch
 
-" prevent bell and error sounds
-set noerrorbells
-set visualbell
-set t_vb=
-
-" misc
-set title
-set wildmenu
-set scrolloff=15
-set updatetime=320
-autocmd BufWritePost .vimrc source $MYVIMRC
-" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
-autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
-autocmd BufNewFile,BufRead *akefile*,.gitconfig set noexpandtab
-
-" syntax and colors
+" syntax
 syntax enable
-" favorite colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
-colorscheme gruvbox
-set background=dark
 set list
 set listchars=
 set listchars+=tab:│·
 set listchars+=trail:·
+autocmd FileType gitconfig,make set noexpandtab
+" filetype associations
 autocmd BufNewFile,BufRead .vimrc         setfiletype vim
 autocmd BufNewFile,BufRead .*rc           setfiletype bash
 autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
 autocmd BufNewFile,BufRead *.hcl          setfiletype lua
 autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
 autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
+" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
+autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
+
+" colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
+colorscheme sublimemonokai
+set background=dark
+
+" prevent bell and error sounds
+set noerrorbells
+set visualbell
+set t_vb=
+
+" misc
+autocmd BufWritePost .vimrc source $MYVIMRC
+set title
+set wildmenu
+set scrolloff=13
+set updatetime=320
+set noswapfile
+set cursorline
 
 " key mappings
 inoremap jj <Esc>
@@ -54,7 +58,7 @@ nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
 " hide all decorations (spellcheck, search highlights, gitgutter, code completion)
-nmap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>:GitGutterDisable<CR>:CocDisable<CR>
+nmap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>:GitGutterDisable<CR>
 " move current line or selection up/down
 nnoremap <C-k> :m -2<CR>
 nnoremap <C-j> :m +1<CR>
@@ -64,23 +68,28 @@ vnoremap <C-j> :m '>+1<CR>gv
 command W w
 command Q q
 command Wq wq
+" leader mappings
+let mapleader = ','
+nnoremap <leader>V :e $MYVIMRC<CR>
+nnoremap <leader>c :colorscheme random<CR>
+nnoremap <leader>n :set number! relativenumber!<CR>
+nnoremap <leader>l :set cursorline!<CR>
+nnoremap <leader>s :setlocal spell!<CR>
 
-" install plugin manager
+" install plugin manager and auto install any new plugins
 let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_git
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" auto install missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 
 " plugin downloads
 call plug#begin()
+  Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-surround'
-  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " plugin settings: gitgutter
@@ -97,20 +106,5 @@ nnoremap <C-l> :Lines<CR>
 nnoremap <C-g> :GFiles<CR>
 nmap <C-o> <C-p>
 
-" plugin settings: coc
-let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-function! s:coc_toggle()
-  if g:coc_enabled
-    CocDisable
-  else
-    CocEnable
-  endif
-endfunction
-nnoremap <silent><F8> :call <SID>coc_toggle()<CR>
-inoremap <silent><expr><C-@>   coc#refresh()
-inoremap <silent><expr><Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
-inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+" plugin settings: vim-surround
+"nnoremap TBD  " surround current word with X
