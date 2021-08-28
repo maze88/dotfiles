@@ -19,17 +19,15 @@ set noerrorbells
 set visualbell
 set t_vb=
 
-" navigation
-set scrolloff=15
-
 " misc
 set title
 set wildmenu
+set scrolloff=15
 set updatetime=320
 autocmd BufWritePost .vimrc source $MYVIMRC
-autocmd BufNewFile,BufRead *akefile*,.gitconfig set noexpandtab
 " fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
-autocmd VimEnter,ColorScheme * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
+autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
+autocmd BufNewFile,BufRead *akefile*,.gitconfig set noexpandtab
 
 " syntax and colors
 syntax enable
@@ -81,8 +79,8 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'airblade/vim-gitgutter'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}  " requires node >=12.12
   Plug 'tpope/vim-surround'
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " plugin settings: gitgutter
@@ -100,7 +98,7 @@ nnoremap <C-g> :GFiles<CR>
 nmap <C-o> <C-p>
 
 " plugin settings: coc
-let g:coc_global_extensions = ['coc-json', 'coc-markdownlint', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
+let g:coc_global_extensions = ['coc-json', 'coc-prettier', 'coc-python', 'coc-sh', 'coc-yaml' ]  " coc-python requires `pip3 install jedi`
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
