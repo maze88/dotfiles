@@ -112,4 +112,4 @@ nnoremap <C-g> :GFiles<CR>
 nmap <C-o> <C-p>
 
 " plugin settings: vim-surround
-"nnoremap TBD  " surround current word with X
+" to visually surround: v<make selection>S<input surrounding><CR>
