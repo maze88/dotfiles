@@ -32,7 +32,7 @@ autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
 autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
-colorscheme sublimemonokai
+colorscheme badwolf
 set background=dark
 
 " prevent bell and error sounds
@@ -86,11 +86,16 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | 
 
 " plugin downloads
 call plug#begin()
+  Plug 'tpope/vim-commentary'
   Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'
 call plug#end()
+
+" plugin settings: vim-commentary
+nmap <C-_> :Commentary<CR>
+vmap <C-_> :Commentary<CR>gv
 
 " plugin settings: gitgutter
 nnoremap <F6> :GitGutterToggle<CR>
