@@ -46,7 +46,6 @@ set title
 set wildmenu
 set scrolloff=13
 set updatetime=320
-set noswapfile
 set cursorline
 
 " key mappings
