@@ -13,6 +13,7 @@
 	ci = commit
 	st = status -sb
 	cam = commit -am
+	d = diff
 	last = diff HEAD~1
 	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr)%Creset %s %C(bold blue)<%an>%Creset'
 [gpg]

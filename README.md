@@ -1,2 +1,2 @@
 ## My Dotfiles
-A backup/collection of my Unix-y configuration files.
+A backup, collection and gallery of my personal Unix-y configuration files.
