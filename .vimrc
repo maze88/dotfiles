@@ -28,12 +28,12 @@ autocmd BufRead,BufNewFile .*rc         setfiletype bash
 autocmd BufRead,BufNewFile *ockerfile*  setfiletype dockerfile
 autocmd BufRead,BufNewFile *.hcl        setfiletype lua
 autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
-" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
-autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
 colorscheme badwolf
-"set background=dark
+set background=dark
+" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
+autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " prevent bell and error sounds
 set noerrorbells
