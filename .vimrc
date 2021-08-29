@@ -22,18 +22,18 @@ set listchars+=tab:│·
 set listchars+=trail:·
 autocmd FileType gitconfig,make set noexpandtab
 " filetype associations
-autocmd BufNewFile,BufRead .vimrc         setfiletype vim
-autocmd BufNewFile,BufRead .*rc           setfiletype bash
-autocmd BufNewFile,BufRead *ockerfile*    setfiletype dockerfile
-autocmd BufNewFile,BufRead *.hcl          setfiletype lua
-autocmd BufNewFile,BufRead *enkinsfile*   setfiletype groovy
-autocmd BufNewFile,BufRead ~/*kube*config setfiletype yaml
+autocmd BufRead .vimrc                  setfiletype vim
+autocmd BufRead ~/*kube*config          setfiletype yaml
+autocmd BufRead,BufNewFile .*rc         setfiletype bash
+autocmd BufRead,BufNewFile *ockerfile*  setfiletype dockerfile
+autocmd BufRead,BufNewFile *.hcl        setfiletype lua
+autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
 " fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
 autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
 colorscheme badwolf
-set background=dark
+"set background=dark
 
 " prevent bell and error sounds
 set noerrorbells
@@ -52,7 +52,8 @@ set cursorline
 inoremap jj <Esc>
 nnoremap Y y$
 nnoremap H :nohlsearch<CR>
-noremap <F7> :setlocal spell!<CR>
+noremap  <F7>      :setlocal spell!<CR>
+inoremap <F7> <C-o>:setlocal spell!<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
@@ -69,17 +70,15 @@ command Q q
 command Wq wq
 " leader mappings
 let mapleader = ','
-nnoremap <leader>V :e $MYVIMRC<CR>
+nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>c :colorscheme random<CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 nnoremap <leader>l :set cursorline!<CR>
 nnoremap <leader>s :setlocal spell!<CR>
 
 " install plugin manager and auto install any new plugins
-let vim_plug_git = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs '.vim_plug_git
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)')) | PlugInstall --sync | source $MYVIMRC | endif
 
@@ -93,11 +92,12 @@ call plug#begin()
 call plug#end()
 
 " plugin settings: vim-commentary
-nmap <C-_> :Commentary<CR>
-vmap <C-_> :Commentary<CR>gv
+nnoremap <C-_> :Commentary<CR>
+vnoremap <C-_> :Commentary<CR>gv
 
 " plugin settings: gitgutter
-nnoremap <F6> :GitGutterToggle<CR>
+nnoremap <leader>g :GitGutterToggle<CR>
+nnoremap <F6>      :GitGutterToggle<CR>
 autocmd VimEnter,ColorScheme * highlight clear SignColumn
 autocmd VimEnter,ColorScheme * highlight GitGutterDelete  ctermbg=NONE ctermfg=1
 autocmd VimEnter,ColorScheme * highlight GitGutterAdd     ctermbg=NONE ctermfg=2
