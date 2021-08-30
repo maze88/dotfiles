@@ -45,20 +45,19 @@ autocmd BufWritePost .vimrc source $MYVIMRC
 set title
 set wildmenu
 set scrolloff=13
-set updatetime=320
+set updatetime=500
 set cursorline
 
 " key mappings
 inoremap jj <Esc>
 nnoremap Y y$
 nnoremap H :nohlsearch<CR>
-noremap  <F7>      :setlocal spell!<CR>
-inoremap <F7> <C-o>:setlocal spell!<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
+nnoremap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>
+inoremap <F7> <C-o>:setlocal spell!<CR>
+noremap  <F7>      :setlocal spell!<CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
-" hide all decorations (spellcheck, search highlights, gitgutter, code completion)
-nmap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>:GitGutterDisable<CR>
 " move current line or selection up/down
 nnoremap <C-k> :m -2<CR>
 nnoremap <C-j> :m +1<CR>
@@ -92,23 +91,37 @@ call plug#begin()
 call plug#end()
 
 " plugin settings: vim-commentary
-nnoremap <C-_> :Commentary<CR>
-vnoremap <C-_> :Commentary<CR>gv
+if has_key(plugs, 'vim-commentary')
+  nnoremap <C-_> :Commentary<CR>
+  vnoremap <C-_> :Commentary<CR>gv
+endif
 
 " plugin settings: gitgutter
-nnoremap <leader>g :GitGutterToggle<CR>
-nnoremap <F6>      :GitGutterToggle<CR>
-autocmd VimEnter,ColorScheme * highlight clear SignColumn
-autocmd VimEnter,ColorScheme * highlight GitGutterDelete  ctermbg=NONE ctermfg=1
-autocmd VimEnter,ColorScheme * highlight GitGutterAdd     ctermbg=NONE ctermfg=2
-autocmd VimEnter,ColorScheme * highlight GitGutterChange  ctermbg=NONE ctermfg=3
+if has_key(plugs, 'vim-gitgutter')
+  nnoremap <leader>g :GitGutterToggle<CR>
+  nnoremap <F6>      :GitGutterToggle<CR>
+  autocmd VimEnter,ColorScheme * highlight clear SignColumn
+  autocmd VimEnter,ColorScheme * highlight GitGutterDelete  ctermbg=NONE ctermfg=1
+  autocmd VimEnter,ColorScheme * highlight GitGutterAdd     ctermbg=NONE ctermfg=2
+  autocmd VimEnter,ColorScheme * highlight GitGutterChange  ctermbg=NONE ctermfg=3
+endif
 
 " plugin settings: fzf
-nnoremap <C-p> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-l> :Lines<CR>
-nnoremap <C-g> :GFiles<CR>
-nmap <C-o> <C-p>
+if has_key(plugs, 'fzf.vim')
+  nnoremap <C-p> :Files<CR>
+  nnoremap <C-b> :Buffers<CR>
+  nnoremap <C-l> :Lines<CR>
+  nnoremap <C-g> :GFiles<CR>
+  nmap <C-o> <C-p>
+endif
 
 " plugin settings: vim-surround
-" to visually surround: v<make selection>S<input surrounding><CR>
+if has_key(plugs, 'vim-surround')
+  for s in ['"', "'", '`', '*', ')', ']', '}']
+    execute 'nmap ys'.s.' ysiw'.s
+  endfor
+  nmap ys( ysiw)
+  nmap ys[ ysiw]
+  nmap ys{ ysiw}
+  " visual surround with: vS*
+endif
