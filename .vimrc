@@ -41,7 +41,7 @@ set visualbell
 set t_vb=
 
 " misc
-autocmd BufWritePost .vimrc source $MYVIMRC
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set title
 set wildmenu
 set scrolloff=13
@@ -63,6 +63,11 @@ nnoremap <C-k> :m -2<CR>
 nnoremap <C-j> :m +1<CR>
 vnoremap <C-k> :m '<-2<CR>gv
 vnoremap <C-j> :m '>+1<CR>gv
+" improve indentation shortcuts
+nnoremap << <<
+nnoremap >> >>
+vnoremap << <gv
+vnoremap >> >gv
 " cover for commands typos
 command W w
 command Q q
@@ -123,5 +128,5 @@ if has_key(plugs, 'vim-surround')
   nmap ys( ysiw)
   nmap ys[ ysiw]
   nmap ys{ ysiw}
-  " visual surround with: vS*
+  " can visual surround with: vS*
 endif
