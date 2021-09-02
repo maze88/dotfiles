@@ -5,8 +5,8 @@
 export EDITOR=vi
 export VISUAL=vim
 export AWS_PROFILE=${AWS_PROFILE}
-export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'  # get fd-find with apt
-export FZF_DEFAULT_OPTS='--multi --cycle'  # get fzf from https://github.com/junegunn/fzf
+export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'  # get fd-find with package manager
+export FZF_DEFAULT_OPTS='--multi --cycle'  # get fzf from https://github.com/junegunn/fzf/releases/latest
 
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
