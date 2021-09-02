@@ -3,7 +3,7 @@
 	email = michael.52@msn.com
 	signingkey = B414CE964283C287
 [includeIf "gitdir:~/work/develeap/"]
-	path = ~/work/develeap/.gitconfig
+	path = ~/work/develeap/.gitconfig  # contains work user.email
 [core]
 	editor = vim
 	fileMode = true
