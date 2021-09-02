@@ -28,12 +28,12 @@ autocmd BufRead,BufNewFile .*rc         setfiletype bash
 autocmd BufRead,BufNewFile *ockerfile*  setfiletype dockerfile
 autocmd BufRead,BufNewFile *.hcl        setfiletype lua
 autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
+" fix spellcheck not highlighting in some colorschemes
+autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
 colorscheme badwolf
 set background=dark
-" fix spellcheck not highlighting in some colorschemes (must be *before* colorscheme command)
-autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
 " prevent bell and error sounds
 set noerrorbells
@@ -52,22 +52,22 @@ set cursorline
 inoremap jj <Esc>
 nnoremap Y y$
 nnoremap H :nohlsearch<CR>
-nnoremap <C-m> :w<CR>:make<CR><CR><CR>
-nnoremap <silent><F5> :setlocal nospell<CR>:nohlsearch<CR>
-inoremap <F7> <C-o>:setlocal spell!<CR>
 noremap  <F7>      :setlocal spell!<CR>
+inoremap <F7> <C-o>:setlocal spell!<CR>
+nnoremap <silent> <F5> :setlocal nospell<CR>:nohlsearch<CR>
+nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " substitute all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
 " move current line or selection up/down
-nnoremap <C-k> :m -2<CR>
-nnoremap <C-j> :m +1<CR>
-vnoremap <C-k> :m '<-2<CR>gv
-vnoremap <C-j> :m '>+1<CR>gv
+nnoremap <silent> <C-k> :m -2<CR>
+nnoremap <silent> <C-j> :m +1<CR>
+vnoremap <silent> <C-k> :m '<-2<CR>gv
+vnoremap <silent> <C-j> :m '>+1<CR>gv
 " improve indentation shortcuts
-nnoremap << <<
-nnoremap >> >>
-vnoremap << <gv
-vnoremap >> >gv
+nnoremap < <<
+nnoremap > >>
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
 " cover for commands typos
 command W w
 command Q q
@@ -97,8 +97,8 @@ call plug#end()
 
 " plugin settings: vim-commentary
 if has_key(plugs, 'vim-commentary')
-  nnoremap <C-_> :Commentary<CR>
-  vnoremap <C-_> :Commentary<CR>gv
+  nnoremap <silent> <C-_> :Commentary<CR>
+  vnoremap <silent> <C-_> :Commentary<CR>gv
 endif
 
 " plugin settings: gitgutter
@@ -128,5 +128,5 @@ if has_key(plugs, 'vim-surround')
   nmap ys( ysiw)
   nmap ys[ ysiw]
   nmap ys{ ysiw}
-  " can visual surround with: vS*
+  " can also visual surround with: vS*
 endif
