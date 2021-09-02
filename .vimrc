@@ -52,7 +52,7 @@ set cursorline
 inoremap jj <Esc>
 nnoremap Y y$
 nnoremap H :nohlsearch<CR>
-noremap  <F7>      :setlocal spell!<CR>
+nnoremap <F7>      :setlocal spell!<CR>
 inoremap <F7> <C-o>:setlocal spell!<CR>
 nnoremap <silent> <F5> :setlocal nospell<CR>:nohlsearch<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
