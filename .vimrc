@@ -122,7 +122,7 @@ endif
 
 " plugin settings: vim-surround
 if has_key(plugs, 'vim-surround')
-  for s in ['"', "'", '`', '*', ')', ']', '}']
+  for s in ['"', "'", '`', '*', '_', ')', ']', '}']
     execute 'nmap ys'.s.' ysiw'.s
   endfor
   nmap ys( ysiw)
