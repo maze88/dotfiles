@@ -14,8 +14,11 @@ set expandtab
 set hlsearch
 set incsearch
 
-" syntax
+" colors and syntax
+" favorites: badwolf/firecode/gruvbox/slate/sublimemonokai
+colorscheme slate
 syntax enable
+set background=dark
 set list
 set listchars=
 set listchars+=tab:│·
@@ -30,10 +33,6 @@ autocmd BufRead,BufNewFile *.hcl        setfiletype lua
 autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
 " fix spellcheck not highlighting in some colorschemes
 autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
-
-" colors: default/badwolf/firecode/gruvbox/ron/sublimemonokai/random
-colorscheme badwolf
-set background=dark
 
 " prevent bell and error sounds
 set noerrorbells
