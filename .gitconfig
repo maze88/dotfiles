@@ -18,6 +18,8 @@
 	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr)%Creset %s %C(bold blue)<%an>%Creset'
 [gpg]
 	program = /usr/bin/gpg
+[init]
+	defaultBranch = main
 [commit]
 	gpgsign = true
 [pull]
