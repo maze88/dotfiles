@@ -16,7 +16,7 @@ set incsearch
 
 " colors and syntax
 " favorites: badwolf/firecode/gruvbox/slate/sublimemonokai
-colorscheme slate
+colorscheme sublimemonokai
 syntax enable
 set background=dark
 set list
@@ -55,7 +55,7 @@ nnoremap <F7>      :setlocal spell!<CR>
 inoremap <F7> <C-o>:setlocal spell!<CR>
 nnoremap <silent> <F5> :setlocal nospell<CR>:nohlsearch<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
-" substitute all instances of current word under cursor
+" search and replace all instances of current word under cursor
 nnoremap S #:%s/<C-r>+//g<Left><Left>
 " move current line or selection up/down
 nnoremap <silent> <C-k> :m -2<CR>
