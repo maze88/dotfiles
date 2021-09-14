@@ -16,7 +16,7 @@ set incsearch
 
 " colors and syntax
 " favorites: badwolf/firecode/gruvbox/slate/sublimemonokai
-colorscheme sublimemonokai
+colorscheme badwolf
 syntax enable
 set list
 set listchars=
@@ -44,6 +44,8 @@ set title
 set wildmenu
 set scrolloff=13
 set updatetime=500
+set foldmethod=indent
+set foldlevel=99
 set cursorline
 
 " key mappings
@@ -77,7 +79,8 @@ nnoremap <leader>c :colorscheme random<CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 nnoremap <leader>l :set cursorline!<CR>
 nnoremap <leader>s :setlocal spell!<CR>
-nnoremap <Leader>b :let &background=(&background == 'dark'?'light':'dark')<CR>
+nnoremap <Leader>b :let &background=(&background == 'dark' ? 'light' : 'dark')<CR>
+nnoremap <expr> <leader>f &foldlevel ? 'zM' :'zR'
 
 " install plugin manager and auto install any new plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
