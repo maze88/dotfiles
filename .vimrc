@@ -18,7 +18,6 @@ set incsearch
 " favorites: badwolf/firecode/gruvbox/slate/sublimemonokai
 colorscheme sublimemonokai
 syntax enable
-set background=dark
 set list
 set listchars=
 set listchars+=tab:│·
@@ -78,6 +77,7 @@ nnoremap <leader>c :colorscheme random<CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 nnoremap <leader>l :set cursorline!<CR>
 nnoremap <leader>s :setlocal spell!<CR>
+nnoremap <Leader>b :let &background=(&background == 'dark'?'light':'dark')<CR>
 
 " install plugin manager and auto install any new plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
