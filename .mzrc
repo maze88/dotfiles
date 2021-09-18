@@ -16,6 +16,7 @@ alias whatsmyip='curl ifconfig.me'
 alias memtop="(echo -e 'PID\tUSER\t%MEM\tCOMMAND' ; ps --no-headers -o pid,user,pmem,comm ax | sort -brnk3) | less"  # output processes sorted by memory consumption
 alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias k=kubectl
+alias fd=fdfind
 
 # completion
 source <(pandoc --bash-completion)
