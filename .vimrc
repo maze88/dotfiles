@@ -78,6 +78,7 @@ nnoremap <leader>v :e $MYVIMRC<CR>
 nnoremap <leader>c :colorscheme random<CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 nnoremap <leader>l :set cursorline!<CR>
+nnoremap <leader>w :set wrap!<CR>
 nnoremap <leader>s :setlocal spell!<CR>
 nnoremap <Leader>b :let &background=(&background == 'dark' ? 'light' : 'dark')<CR>
 nnoremap <expr> <leader>f &foldlevel ? 'zM' :'zR'
