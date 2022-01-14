@@ -1,6 +1,6 @@
 [user]
 	name = Michael Zeevi
-	email = michael.52@msn.com
+	email = michaelzeevi@protonmail.com
 	signingkey = B414CE964283C287
 [includeIf "gitdir:~/work/develeap/"]
 	path = ~/work/develeap/.gitconfig  # contains work user.email
