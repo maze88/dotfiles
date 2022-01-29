@@ -1,7 +1,7 @@
 [user]
 	name = Michael Zeevi
 	email = michaelzeevi@protonmail.com
-	signingkey = B414CE964283C287
+	; signingkey = TBD
 [includeIf "gitdir:~/work/develeap/"]
 	path = ~/work/develeap/.gitconfig  # contains work user.email
 [core]
@@ -20,7 +20,7 @@
 	program = /usr/bin/gpg
 [init]
 	defaultBranch = main
-[commit]
-	gpgsign = true
+; [commit]
+; 	gpgsign = true
 [pull]
 	rebase = false
