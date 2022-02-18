@@ -96,6 +96,7 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'
+  Plug 'ap/vim-css-color'
 call plug#end()
 
 " plugin settings: vim-commentary
@@ -116,11 +117,10 @@ endif
 
 " plugin settings: fzf
 if has_key(plugs, 'fzf.vim')
-  nnoremap <C-p> :Files<CR>
+  nnoremap <C-o> :Files<CR>
   nnoremap <C-b> :Buffers<CR>
   nnoremap <C-l> :Lines<CR>
-  nnoremap <C-g> :GFiles<CR>
-  nmap <C-o> <C-p>
+  nmap <leader>/ <C-l>
 endif
 
 " plugin settings: vim-surround
