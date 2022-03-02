@@ -29,7 +29,6 @@ autocmd BufRead ~/*kube*config          setfiletype yaml
 autocmd BufRead,BufNewFile .*rc         setfiletype bash
 autocmd BufRead,BufNewFile *ockerfile*  setfiletype dockerfile
 autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
-autocmd BufRead,BufNewFile *.tf,*.hcl,*.tfvars setfiletype hcl
 " fix spellcheck not highlighting in some colorschemes
 autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
@@ -97,6 +96,7 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-surround'
   Plug 'ap/vim-css-color'
+  Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " plugin settings: vim-commentary
