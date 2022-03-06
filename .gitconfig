@@ -1,26 +1,27 @@
 [user]
 	name = Michael Zeevi
 	email = michaelzeevi@protonmail.com
-	; signingkey = TBD
+	signingkey = 2458479E16EF8831
 [includeIf "gitdir:~/work/develeap/"]
 	path = ~/work/develeap/.gitconfig  # contains work user.email
 [core]
 	editor = vim
 	fileMode = true
+	excludesfile = ~/.gitignore
 [alias]
 	co = checkout
 	br = branch
 	ci = commit
 	st = status -sb
 	cam = commit -am
-	d = diff
 	last = diff HEAD~1
+	d = diff
 	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr)%Creset %s %C(bold blue)<%an>%Creset'
-[gpg]
-	program = /usr/bin/gpg
 [init]
 	defaultBranch = main
-; [commit]
-; 	gpgsign = true
 [pull]
 	rebase = false
+[gpg]
+	program = /usr/bin/gpg
+[commit]
+	gpgsign = true
