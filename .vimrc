@@ -56,7 +56,7 @@ inoremap <F7> <C-o>:setlocal spell!<CR>
 nnoremap <silent> <F5> :setlocal nospell<CR>:nohlsearch<CR>
 nnoremap <C-m> :w<CR>:make<CR><CR><CR>
 " search and replace all instances of current word under cursor
- nnoremap S *:%s///g<Left><Left>
+nnoremap S *:%s///g<Left><Left>
 " move current line or selection up/down
 nnoremap <silent> <C-k> :m -2<CR>
 nnoremap <silent> <C-j> :m +1<CR>

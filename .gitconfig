@@ -2,8 +2,8 @@
 	name = Michael Zeevi
 	email = michaelzeevi@protonmail.com
 	signingkey = 2458479E16EF8831
-[includeIf "gitdir:~/work/develeap/"]
-	path = ~/work/develeap/.gitconfig  # contains work `user.email = ...` and `core.sshCommand = "ssh -i ~/.ssh/work.key"`
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig  # contains work `user.email = ...` and `core.sshCommand = "ssh -i ~/work/.ssh/id_rsa"`
 [core]
 	editor = vim
 	fileMode = true
