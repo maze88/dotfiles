@@ -29,6 +29,7 @@ autocmd BufRead ~/*kube*config          setfiletype yaml
 autocmd BufRead,BufNewFile .*rc         setfiletype bash
 autocmd BufRead,BufNewFile *ockerfile*  setfiletype dockerfile
 autocmd BufRead,BufNewFile *enkinsfile* setfiletype groovy
+autocmd BufRead,BufNewFile todo         setfiletype markdown
 " fix spellcheck not highlighting in some colorschemes
 autocmd VimEnter,ColorScheme,BufReadPost * highlight SpellBad cterm=underline ctermbg=52 ctermfg=196
 
