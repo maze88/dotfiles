@@ -13,12 +13,13 @@ alias ll='ls -hlF --group-directories-first --color=auto'
 alias diff='diff --color=auto'
 alias ip='ip -c'
 alias whatsmyip='curl ifconfig.me'
-alias memtop="(echo -e 'PID\tUSER\t%MEM\tCOMMAND' ; ps --no-headers -o pid,user,pmem,comm ax | sort -brnk3) | head"  # output top processes sorted by memory consumption (-n to change amount listed)
-alias cputop="(echo -e 'PID\tUSER\t%CPU\tCOMMAND' ; ps --no-headers -o pid,user,pcpu,comm ax | sort -brnk3) | head"  # output top processes sorted by cpu consumption (-n to change amount listed)
+alias memtop="(echo -e 'PID\tUSER\t%MEM\tCOMMAND' ; ps --no-headers -o pid,user,pmem,comm ax | sort -brnk3) | head -n 21"  # output top processes sorted by memory consumption (-n to change amount listed)
+alias cputop="(echo -e 'PID\tUSER\t%CPU\tCOMMAND' ; ps --no-headers -o pid,user,pcpu,comm ax | sort -brnk3) | head -n 21"  # output top processes sorted by cpu consumption (-n to change amount listed)
 alias cat='bat -pp'  # get bat from https://github.com/sharkdp/bat/releases/latest
 alias vi=vim
 alias k=kubectl
 alias fd=fdfind
+alias tldr='docker run --rm -it -v ~/.tldr/:/root/.tldr/ nutellinoit/tldr'
 
 # completion
 source <(pandoc --bash-completion)
