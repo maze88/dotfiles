@@ -23,9 +23,10 @@ alias tldr='docker run --rm -it -v ~/.tldr/:/root/.tldr/ nutellinoit/tldr'
 
 # completion
 source <(pandoc --bash-completion)
-source <(kubectl  completion bash)
 source <(kind     completion bash)
+source <(kubectl  completion bash)
 source <(helm     completion bash)
+source <(argocd   completion bash)
 complete -F __start_kubectl k
 complete -C aws_completer   aws
 complete -C terraform       terraform
