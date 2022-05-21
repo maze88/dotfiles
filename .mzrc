@@ -7,6 +7,7 @@ export VISUAL=vim
 export AWS_PROFILE=${AWS_PROFILE}
 export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'  # get fd-find with package manager
 export FZF_DEFAULT_OPTS='--multi --cycle'  # get fzf from https://github.com/junegunn/fzf/releases/latest
+export BAT_THEME="Monokai Extended Dark"
 
 # aliases
 alias ll='ls -hlF --group-directories-first --color=auto'
@@ -23,9 +24,9 @@ alias tldr='docker run --rm -it -v ~/.tldr/:/root/.tldr/ nutellinoit/tldr'
 
 # completion
 source <(pandoc --bash-completion)
-source <(kubectl  completion bash)
-source <(kind     completion bash)
 source <(helm     completion bash)
+source <(kind     completion bash)
+source <(kubectl  completion bash)
 complete -F __start_kubectl k
 complete -C aws_completer   aws
 complete -C terraform       terraform
